@@ -39,7 +39,7 @@ const SocialCard = () => {
           </a>
         </div>
         <div
-          style={{ backgroundColor: "white", width: "3px", height: "108px" }}
+          style={{ backgroundColor: "white", width: "3px", height: "120px" }}
         />
       </div>
     </div>

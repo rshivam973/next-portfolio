@@ -68,10 +68,9 @@ const Projects = () => {
   };
 
   return (
-    <Element name="projects">
+    <Element name="projects" className="projects-section">
       <div
-        className="flex flex-col justify-center text-white"
-        style={{ margin: "0 10% 0 10%", height: "100vh", position: "relative" }}
+        className="flex flex-col justify-center text-white projects-main-div"
       >
         <div>
           <p className="text-4xl font-bold">Projects</p>

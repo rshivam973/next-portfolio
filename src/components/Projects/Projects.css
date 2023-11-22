@@ -4,6 +4,18 @@
     align-items: center;
   }
 
+.projects-main-div{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  position: relative;
+  height: 100vh;
+  margin: 0 10% 0 10%;
+}
+.projects-section{
+  margin-top: 10%;
+}
+
   .normal-text{
     font-family: 'Roboto', sans-serif;
   }
@@ -41,5 +53,13 @@
     
     .image-container img{
       height: 280px;
+    }
+
+    .main-div{
+      margin-top: 25%;
+    }
+    .projects-section{
+      margin-top: 50%;
+      margin-bottom: 0%;
     }
 }

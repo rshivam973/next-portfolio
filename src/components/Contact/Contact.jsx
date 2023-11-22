@@ -71,9 +71,9 @@ const Contact = () => {
   };
 
   return (
-    <Element name="contact">
+    <Element name="contact" className="contacts-section">
       <div
-        className="flex flex-row text-white items-center justify-center mt-52 mb-52"
+        className="flex flex-row text-white items-center justify-center mb-20"
         style={{ marginLeft: "10%", marginRight: "10%" }}
       >
         <div>
@@ -1085,7 +1085,7 @@ const Contact = () => {
                 </div>
                 <div className="mt-8">
                   <button
-                    className={`uppercase text-sm font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline ${loading ? 'cursor-not-allowed' : ''}`}
+                    className={`uppercase text-sm font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none hover:bg-violet-600 focus:shadow-outline ${loading ? 'cursor-not-allowed' : ''}`}
                     type="submit"
                   >
                     {loading ? (

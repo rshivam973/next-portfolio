@@ -6,7 +6,7 @@ const Lander = () => {
   return (
     <Element name="lander">
     <div
-      className=" text-white"
+      className=" text-white lander-main-div"
       style={{
         justifyContent: "center",
         justifyItems: "left",

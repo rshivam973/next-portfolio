@@ -5,7 +5,6 @@
 .about-container{
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
     margin-top: 20px;
 }
@@ -26,14 +25,28 @@
     border-radius: 50%;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 640px) {
     /* Styles for small devices go here */
     /* Adjust styles for small screens, such as smartphones */
     .about-container{
         flex-direction: column;
         text-align: justify;
+        font-size: smaller;
     }
     .image-div{
         margin-top: 10%;
+    }
+    .about-main-div{
+        margin-top: 50px;
+        height: 100vh;
+        margin-bottom: 10%;
+    }
+    .profile-pic{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+    }
+    .about-section{
+        margin-top: 50%;
     }
 }

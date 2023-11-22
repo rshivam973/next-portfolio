@@ -6,9 +6,9 @@ import ProfilePic from "../../../public/assets/images/Me.jpg";
 
 const About = () => {
   return (
-    <Element name="about">
+    <Element name="about" className="about-section">
     <div
-      className="flex flex-row relative h-full items-center text-white"
+      className="flex flex-row items-center text-white about-main-div"
       style={{ height: "100vh", position: "relative", margin: "0 10% 0 10%" }}
     >
       <div>

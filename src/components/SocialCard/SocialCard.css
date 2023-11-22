@@ -1,12 +1,28 @@
-.main-div{
-    position:fixed;
-    top:60%;
-    z-index: 50;
+.main-div {
+  position: fixed;
+  bottom: -2%;
+    left: 0;
+    gap: 10px;
+  z-index: 50;
 }
 
-.icons{
-    cursor: pointer;   
+.icons {
+  cursor: pointer;
 }
-.icons:hover{
-    transform: scale(1.1);
+.icons:hover {
+  transform: scale(1.1);
+}
+
+@media only screen and (max-width: 640px) {
+  .main-div {
+    position: fixed;
+    bottom: -2%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    gap: 10px;
+    margin: 2px;
+    z-index: 25;
+  }
 }
