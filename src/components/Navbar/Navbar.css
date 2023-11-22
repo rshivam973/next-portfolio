@@ -36,7 +36,7 @@
 .menu-toggle {
     display: none; /* Hide by default on larger screens */
     cursor: pointer;
-    padding: 10px;
+    padding: 5px;
     color: white;
   }
 
@@ -53,7 +53,7 @@
   
     .menu {
       /* Add styles for smaller screens here */
-      font-size:xx-large;
+      font-size:large;
     }
 
     .menu-toggle {

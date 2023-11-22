@@ -27,7 +27,7 @@ const About = () => {
         <p className="text-xl mt-2 normal-text">
           Here are some technologies that I've been working with recently:
         </p>
-        <div className="flex flex-row normal-text text-xl">
+        <div className="flex flex-row normal-text text-xl skills-table">
           <div className="flex-col mr-20">
             <p className="m-2">★ ReactJS</p>
             <p className="m-2">★ NextJS</p>
