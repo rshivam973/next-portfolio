@@ -1,0 +1,39 @@
+.normal-text{
+    font-family: 'Roboto', sans-serif;
+}
+
+.about-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.para-div{
+    display: flex;
+    flex-direction: column;
+    flex:0.6;
+}
+.image-div{
+    display: flex;
+    flex-direction: row;
+    flex: 0.3;
+}
+.profile-pic{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+    /* Styles for small devices go here */
+    /* Adjust styles for small screens, such as smartphones */
+    .about-container{
+        flex-direction: column;
+        text-align: justify;
+    }
+    .image-div{
+        margin-top: 10%;
+    }
+}
