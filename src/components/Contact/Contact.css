@@ -1,0 +1,9 @@
+.contacts-section{
+    margin-top: 40%;
+}
+
+@media only screen and (max-width:640px){
+    .contacts-section{
+        margin-top: 50%;
+    }
+}

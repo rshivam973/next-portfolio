@@ -1,0 +1,212 @@
+<h2>Portfolio Redesign: Taste Skill Direction</h2>
+<p class="subtitle">Anti-slop, premium portfolio using the Soft Structuralism vibe + Asymmetric layout archetype</p>
+
+<div class="section">
+  <h3>Design System</h3>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+    <div>
+      <p class="label">Color Palette</p>
+      <div style="display: flex; gap: 8px; margin: 12px 0;">
+        <div style="width: 48px; height: 48px; border-radius: 12px; background: #0e1011;" title="#0e1011"></div>
+        <div style="width: 48px; height: 48px; border-radius: 12px; background: #141517;" title="#141517"></div>
+        <div style="width: 48px; height: 48px; border-radius: 12px; background: #1c1d1f;" title="#1c1d1f"></div>
+        <div style="width: 48px; height: 48px; border-radius: 12px; background: #a1a1aa;" title="zinc-400"></div>
+        <div style="width: 48px; height: 48px; border-radius: 12px; background: #f4f4f5;" title="zinc-100"></div>
+        <div style="width: 48px; height: 48px; border-radius: 12px; background: #34d399;" title="emerald-400 (accent)"></div>
+      </div>
+      <p style="font-size: 13px; color: #888;">OLED black canvas. Zinc neutrals. Single emerald accent. No purple. No gradients.</p>
+    </div>
+    <div>
+      <p class="label">Typography</p>
+      <div style="margin: 12px 0;">
+        <p style="font-family: system-ui; font-size: 28px; font-weight: 700; letter-spacing: -1px; color: #f4f4f5;">Geist / Satoshi</p>
+        <p style="font-family: monospace; font-size: 13px; color: #a1a1aa; margin-top: 4px;">Geist Mono for code/labels</p>
+      </div>
+      <p style="font-size: 13px; color: #888;">Display: tight tracking, heavy weight. Body: relaxed line-height, max 65ch. No Inter. No Raleway.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Section-by-Section Redesign</h3>
+</div>
+
+<div class="mockup">
+  <div class="mockup-header">1. Floating Glass Nav (replaces sticky bar)</div>
+  <div class="mockup-body" style="background: #0e1011; padding: 32px; min-height: 80px;">
+    <div style="max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center;">
+      <span style="color: #f4f4f5; font-weight: 600; font-size: 15px; letter-spacing: -0.5px;">SR</span>
+      <div style="display: flex; gap: 24px;">
+        <span style="color: #a1a1aa; font-size: 13px;">about</span>
+        <span style="color: #a1a1aa; font-size: 13px;">work</span>
+        <span style="color: #a1a1aa; font-size: 13px;">contact</span>
+      </div>
+      <div style="background: #34d399; color: #0e1011; font-size: 12px; font-weight: 600; padding: 6px 16px; border-radius: 999px;">Resume</div>
+    </div>
+    <p style="text-align: center; color: #555; font-size: 11px; margin-top: 12px;">Floating pill nav with glass blur. Hamburger morphs to X on mobile.</p>
+  </div>
+</div>
+
+<div class="mockup" style="margin-top: 16px;">
+  <div class="mockup-header">2. Hero Section (Asymmetric Split)</div>
+  <div class="mockup-body" style="background: #0e1011; padding: 48px 40px; min-height: 300px;">
+    <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center;">
+      <div>
+        <div style="display: inline-block; background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.2); border-radius: 999px; padding: 4px 14px; margin-bottom: 16px;">
+          <span style="color: #34d399; font-size: 11px; font-family: monospace; letter-spacing: 1px;">AVAILABLE FOR WORK</span>
+        </div>
+        <h1 style="color: #f4f4f5; font-size: 48px; font-weight: 700; letter-spacing: -2px; line-height: 1; margin: 0;">Shivam Rajput</h1>
+        <p style="color: #a1a1aa; font-size: 18px; margin: 16px 0 0; line-height: 1.6; max-width: 480px;">Full-stack developer building web and blockchain products. Focused on interfaces that feel intentional.</p>
+        <div style="display: flex; gap: 12px; margin-top: 28px;">
+          <div style="background: #f4f4f5; color: #0e1011; font-size: 13px; font-weight: 600; padding: 10px 22px; border-radius: 999px; display: flex; align-items: center; gap: 8px;">View work <span style="background: rgba(0,0,0,0.08); border-radius: 50%; width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; font-size: 11px;">&darr;</span></div>
+          <div style="border: 1px solid rgba(255,255,255,0.15); color: #a1a1aa; font-size: 13px; padding: 10px 22px; border-radius: 999px;">Get in touch</div>
+        </div>
+      </div>
+      <div style="position: relative;">
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 2rem; padding: 6px;">
+          <div style="background: #1c1d1f; border-radius: calc(2rem - 6px); width: 100%; height: 280px; display: flex; align-items: center; justify-content: center; color: #555; font-size: 13px; overflow: hidden;">
+            <span>Profile photo (double-bezel frame)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="color: #555; font-size: 11px; margin-top: 20px;">Left-aligned text. No centered hero. Eyebrow pill tag. Button-in-button CTA pattern. Double-bezel photo frame. Staggered fade-up entry animation.</p>
+  </div>
+</div>
+
+<div class="mockup" style="margin-top: 16px;">
+  <div class="mockup-header">3. About Section (Editorial Split)</div>
+  <div class="mockup-body" style="background: #0e1011; padding: 48px 40px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px;">
+      <div>
+        <p style="color: #34d399; font-size: 11px; font-family: monospace; letter-spacing: 2px; margin-bottom: 12px;">ABOUT</p>
+        <p style="color: #a1a1aa; font-size: 15px; line-height: 1.8; max-width: 50ch;">Bio text here with relaxed line-height and constrained width. No wall of text. Concise, specific, no filler words.</p>
+      </div>
+      <div>
+        <p style="color: #34d399; font-size: 11px; font-family: monospace; letter-spacing: 2px; margin-bottom: 12px;">STACK</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 6px 14px; color: #a1a1aa; font-size: 13px;">React</span>
+          <span style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 6px 14px; color: #a1a1aa; font-size: 13px;">Next.js</span>
+          <span style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 6px 14px; color: #a1a1aa; font-size: 13px;">Solidity</span>
+          <span style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 6px 14px; color: #a1a1aa; font-size: 13px;">React Native</span>
+          <span style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 6px 14px; color: #a1a1aa; font-size: 13px;">Node.js</span>
+          <span style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 6px 14px; color: #a1a1aa; font-size: 13px;">C++</span>
+        </div>
+      </div>
+    </div>
+    <p style="color: #555; font-size: 11px; margin-top: 20px;">Two-column editorial split. Monospace eyebrow labels. Tech pills with subtle glass borders. No star bullets.</p>
+  </div>
+</div>
+
+<div class="mockup" style="margin-top: 16px;">
+  <div class="mockup-header">4. Projects (Spotlight Border Cards, No Carousel)</div>
+  <div class="mockup-body" style="background: #0e1011; padding: 48px 40px;">
+    <p style="color: #34d399; font-size: 11px; font-family: monospace; letter-spacing: 2px; margin-bottom: 24px;">SELECTED WORK</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 1.5rem; padding: 6px;">
+        <div style="background: #1c1d1f; border-radius: calc(1.5rem - 6px); overflow: hidden;">
+          <div style="height: 180px; background: linear-gradient(135deg, #1a2a1a, #1c1d1f); display: flex; align-items: center; justify-content: center; color: #555; font-size: 12px;">App screenshot</div>
+          <div style="padding: 20px;">
+            <h3 style="color: #f4f4f5; font-size: 16px; font-weight: 600; margin: 0;">Secret Share</h3>
+            <p style="color: #71717a; font-size: 13px; margin: 8px 0 14px; line-height: 1.5;">Anonymous messaging platform with real-time delivery</p>
+            <div style="display: flex; gap: 6px;">
+              <span style="font-size: 11px; color: #52525b; background: rgba(255,255,255,0.04); padding: 3px 8px; border-radius: 4px;">Next.js</span>
+              <span style="font-size: 11px; color: #52525b; background: rgba(255,255,255,0.04); padding: 3px 8px; border-radius: 4px;">MongoDB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 1.5rem; padding: 6px;">
+        <div style="background: #1c1d1f; border-radius: calc(1.5rem - 6px); overflow: hidden;">
+          <div style="height: 180px; background: linear-gradient(135deg, #1a1a2a, #1c1d1f); display: flex; align-items: center; justify-content: center; color: #555; font-size: 12px;">App screenshot</div>
+          <div style="padding: 20px;">
+            <h3 style="color: #f4f4f5; font-size: 16px; font-weight: 600; margin: 0;">ETH Share</h3>
+            <p style="color: #71717a; font-size: 13px; margin: 8px 0 14px; line-height: 1.5;">Decentralized file sharing on Ethereum blockchain</p>
+            <div style="display: flex; gap: 6px;">
+              <span style="font-size: 11px; color: #52525b; background: rgba(255,255,255,0.04); padding: 3px 8px; border-radius: 4px;">Solidity</span>
+              <span style="font-size: 11px; color: #52525b; background: rgba(255,255,255,0.04); padding: 3px 8px; border-radius: 4px;">React</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="color: #555; font-size: 11px; margin-top: 20px;">Double-bezel card architecture. Actual app screenshots (not GitHub repos). Title + description + tech tags. Spotlight border glow on hover. No carousel - static grid with staggered scroll reveal.</p>
+  </div>
+</div>
+
+<div class="mockup" style="margin-top: 16px;">
+  <div class="mockup-header">5. Contact (Dark, Integrated)</div>
+  <div class="mockup-body" style="background: #0e1011; padding: 48px 40px;">
+    <div style="max-width: 560px;">
+      <p style="color: #34d399; font-size: 11px; font-family: monospace; letter-spacing: 2px; margin-bottom: 12px;">CONTACT</p>
+      <h2 style="color: #f4f4f5; font-size: 32px; font-weight: 700; letter-spacing: -1px; margin: 0 0 24px;">Let's build something</h2>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div>
+          <label style="color: #71717a; font-size: 12px; display: block; margin-bottom: 6px;">Name</label>
+          <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 16px; color: #a1a1aa; font-size: 14px;">Shivam Rajput</div>
+        </div>
+        <div>
+          <label style="color: #71717a; font-size: 12px; display: block; margin-bottom: 6px;">Email</label>
+          <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 16px; color: #a1a1aa; font-size: 14px;">hello@example.com</div>
+        </div>
+        <div>
+          <label style="color: #71717a; font-size: 12px; display: block; margin-bottom: 6px;">Message</label>
+          <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 12px 16px; color: #a1a1aa; font-size: 14px; min-height: 80px;"></div>
+        </div>
+        <div style="background: #f4f4f5; color: #0e1011; font-size: 13px; font-weight: 600; padding: 12px 24px; border-radius: 999px; text-align: center; margin-top: 8px;">Send message</div>
+      </div>
+    </div>
+    <p style="color: #555; font-size: 11px; margin-top: 20px;">Dark-themed form matching the site. No jarring white card. Labels above inputs. Rounded glass-border inputs. No generic illustration.</p>
+  </div>
+</div>
+
+<div class="mockup" style="margin-top: 16px;">
+  <div class="mockup-header">6. Footer (Minimal)</div>
+  <div class="mockup-body" style="background: #0e1011; padding: 32px 40px;">
+    <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center;">
+      <span style="color: #52525b; font-size: 13px;">2024 Shivam Rajput</span>
+      <div style="display: flex; gap: 20px;">
+        <span style="color: #71717a; font-size: 13px;">GitHub</span>
+        <span style="color: #71717a; font-size: 13px;">LinkedIn</span>
+        <span style="color: #71717a; font-size: 13px;">Instagram</span>
+        <span style="color: #71717a; font-size: 13px;">Email</span>
+      </div>
+    </div>
+    <p style="color: #555; font-size: 11px; margin-top: 16px;">Clean divider. No column farm. Social links replace the floating sidebar. Accessible aria-labels on all links.</p>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>Motion & Interactions</h3>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px;">
+      <p class="label">Scroll reveals</p>
+      <p style="font-size: 13px; color: #888;">Framer Motion whileInView. Staggered fade-up with blur dissolve. Spring physics (stiffness: 100, damping: 20).</p>
+    </div>
+    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px;">
+      <p class="label">Nav hamburger</p>
+      <p style="font-size: 13px; color: #888;">Lines morph to X. Full-screen glass overlay on mobile. Staggered link reveal.</p>
+    </div>
+    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px;">
+      <p class="label">Project cards</p>
+      <p style="font-size: 13px; color: #888;">Spotlight border glow following cursor. Scale 0.98 on press. Subtle image parallax tilt on hover.</p>
+    </div>
+    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px;">
+      <p class="label">Buttons</p>
+      <p style="font-size: 13px; color: #888;">Magnetic pull toward cursor. Active scale-down. Inner icon translates on hover. Custom cubic-bezier easing.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>Key Technical Decisions</h3>
+  <ul style="color: #ccc; font-size: 14px; line-height: 2;">
+    <li>Remove react-slick carousel &rarr; static grid with scroll animations</li>
+    <li>Remove FontAwesome &rarr; Phosphor Icons (light weight, consistent stroke)</li>
+    <li>Remove floating social sidebar &rarr; footer social links with proper aria-labels</li>
+    <li>Font swap: Raleway/News Cycle &rarr; Geist + Geist Mono (via next/font)</li>
+    <li>Color: Purple (#451952) &rarr; OLED black (#0e1011) + emerald accent</li>
+    <li>Keep: Framer Motion (already installed), EmailJS, react-scroll, Tailwind</li>
+    <li>Add: @phosphor-icons/react, Geist font</li>
+  </ul>
+</div>
