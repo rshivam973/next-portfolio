@@ -1,52 +1,82 @@
+"use client";
 import React from "react";
 import { Element } from "react-scroll";
-import "./About.css";
-import Image from "next/image";
-import ProfilePic from "../../../public/assets/images/Me.jpg";
+import { motion } from "framer-motion";
+
+const stagger = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08 },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { type: "spring", stiffness: 100, damping: 20 },
+  },
+};
+
+const techStack = [
+  "React", "Next.js", "React Native", "Solidity", "Node.js", "C++", "Blockchain", "Tailwind CSS",
+];
 
 const About = () => {
   return (
-    <Element name="about" className="about-section">
-    <div
-      className="flex flex-row items-center text-white about-main-div"
-      style={{ height: "100vh", position: "relative", margin: "0 10% 0 10%" }}
-    >
-      <div>
-        <p className="text-4xl font-bold">About Me</p>
-        <div className="about-container">
-          <div className="para-div">
-          <p className="mt-6 text-xl normal-text">
-          Greetings, I'm Shivam. Since my early years in school, I harbored a
-          deep fascination for the realm of Technology and Computers.
-          Consequently, I made the decision to pursue a Bachelor's degree in
-          Computer Science. Over the course of my academic journey, I've created
-          numerous web and Android applications. Additionally, I possess
-          knowledge in Blockchain Technology and have implemented various
-          decentralized applications (DApps) and smart contracts.
-        </p>
-        <p className="text-xl mt-2 normal-text">
-          Here are some technologies that I've been working with recently:
-        </p>
-        <div className="flex flex-row normal-text text-xl skills-table">
-          <div className="flex-col mr-20">
-            <p className="m-2">★ ReactJS</p>
-            <p className="m-2">★ NextJS</p>
-            <p className="m-2">★ Solidity</p>
+    <Element name="about">
+      <section className="py-28 md:py-36">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="max-w-7xl mx-auto px-4 md:px-8"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
+            {/* Left — bio */}
+            <div>
+              <motion.p
+                variants={fadeUp}
+                className="text-accent text-[11px] font-mono tracking-[0.15em] uppercase mb-4"
+              >
+                About
+              </motion.p>
+              <motion.p
+                variants={fadeUp}
+                className="text-text-secondary text-base leading-[1.8] max-w-[50ch]"
+              >
+                I'm Shivam — a developer drawn to the intersection of web platforms
+                and decentralized systems. I studied Computer Science (B.Tech) and
+                spent most of that time building: web apps, mobile apps, DApps, and
+                smart contracts. I care about clean interfaces and code that ships.
+              </motion.p>
+            </div>
+
+            {/* Right — tech stack */}
+            <div>
+              <motion.p
+                variants={fadeUp}
+                className="text-accent text-[11px] font-mono tracking-[0.15em] uppercase mb-4"
+              >
+                Stack
+              </motion.p>
+              <motion.div variants={fadeUp} className="flex flex-wrap gap-2">
+                {techStack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="bg-white/[0.04] border border-white/[0.08] rounded-lg px-3.5 py-1.5 text-text-secondary text-sm transition-colors duration-300 ease-out-expo hover:border-accent/30 hover:text-accent"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </motion.div>
+            </div>
           </div>
-          <div className="flex-col">
-            <p className="m-2">★ React Native</p>
-            <p className="m-2">★ Blockchain</p>
-            <p className="m-2">★ C++</p>
-          </div>
-        </div>
-          </div>
-          <div className="image-div">
-            <Image src={ProfilePic} alt="image" height={500} width={400} className="profile-pic"/>
-          </div>
-        </div>
-        
-      </div>
-    </div>
+        </motion.div>
+      </section>
     </Element>
   );
 };
