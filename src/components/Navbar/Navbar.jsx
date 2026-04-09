@@ -1,66 +1,125 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import "./Navbar.css";
-import Head from "next/head";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from "react";
 import { Link } from "react-scroll";
-import {News_Cycle} from '@next/font/google'
+import { List, X } from "@phosphor-icons/react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const NewsCycle = News_Cycle({
-  subsets: ['latin'],
-  weight: ['400','700']
-});
+const navLinks = [
+  { label: "about", to: "about" },
+  { label: "work", to: "projects" },
+  { label: "contact", to: "contact" },
+];
 
 const Navbar = () => {
-
-  const [isMenuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!isMenuOpen);
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768) {
-        // Set the menu to open when the screen is wide enough
-        setMenuOpen(true);
-      } else {
-        // Close the menu when the screen is small
-        setMenuOpen(false);
-      }
-    };
-
-    // Add event listener for window resize
-    window.addEventListener("resize", handleResize);
-
-    // Initial check for screen size
-    handleResize();
-
-    // Remove event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
-      <div className="" style={{zIndex:50}}>
-        <div className="menu-toggle" onClick={toggleMenu}>
-          {isMenuOpen ? <FontAwesomeIcon icon={faXmark} size="2x" style={{position:'fixed',zIndex:50}} /> : <FontAwesomeIcon icon={faBars} size="2x" style={{position:'fixed',zIndex:50}} /> }
-          
+    <nav className="fixed top-0 left-0 right-0 z-40 flex justify-center pt-5 px-4">
+      {/* Desktop pill */}
+      <div className="hidden md:flex items-center gap-8 bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-full px-6 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.3)]">
+        <Link
+          to="lander"
+          smooth={true}
+          duration={800}
+          className="text-text-primary font-semibold text-sm tracking-tight cursor-pointer"
+        >
+          SR
+        </Link>
 
+        <div className="flex items-center gap-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              smooth={true}
+              duration={800}
+              offset={-80}
+              spy={true}
+              activeClass="!text-accent"
+              className="text-text-secondary text-sm cursor-pointer transition-colors duration-300 ease-out-expo hover:text-text-primary"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
-        <div className={isMenuOpen ? "navbar-container" :"hidden"}>
-        <div className="menu text-white NewsCycle"><Link to="lander" smooth={true} duration={1000}>HOME</Link></div>
-        <div className="menu text-white"><Link to="about" smooth={true} duration={1000}>ABOUT</Link></div>
-        <div className="menu text-white"><Link to="projects" smooth={true} duration={1000}>PROJECTS</Link></div>
-        <div className="menu text-white"><Link to="contact" smooth={true} duration={1000}>CONTACT</Link></div>
-        </div>
-        
+
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-accent text-canvas text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-300 ease-out-expo hover:scale-105 active:scale-[0.98]"
+        >
+          Resume
+        </a>
       </div>
-    </>
+
+      {/* Mobile hamburger */}
+      <div className="md:hidden fixed top-5 right-5 z-50">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="p-2 text-text-primary"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+        >
+          <motion.div
+            animate={{ rotate: isOpen ? 90 : 0 }}
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
+          >
+            {isOpen ? <X size={24} weight="bold" /> : <List size={24} weight="bold" />}
+          </motion.div>
+        </button>
+      </div>
+
+      {/* Mobile overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-40 bg-canvas/90 backdrop-blur-2xl flex flex-col items-center justify-center gap-8"
+          >
+            {navLinks.map((link, i) => (
+              <motion.div
+                key={link.to}
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 24 }}
+                transition={{
+                  delay: i * 0.08,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 20,
+                }}
+              >
+                <Link
+                  to={link.to}
+                  smooth={true}
+                  duration={800}
+                  offset={-80}
+                  onClick={() => setIsOpen(false)}
+                  className="text-text-primary text-3xl font-semibold tracking-tight cursor-pointer hover:text-accent transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
+            ))}
+            <motion.a
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 24 }}
+              transition={{ delay: 0.24, type: "spring", stiffness: 100, damping: 20 }}
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-accent text-canvas text-sm font-semibold px-6 py-2.5 rounded-full mt-4"
+            >
+              Resume
+            </motion.a>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 };
 
