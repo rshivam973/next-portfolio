@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme Transition v2 — Tight Timing</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  body.dark { background: #0e1011; color: #f4f4f5; }
+  body.light { background: #f8f8f6; color: #1a1a1a; }
+
+  .portfolio-mock {
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .nav-pill {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  body.dark .nav-pill { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
+  body.light .nav-pill { background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.08); }
+
+  .nav-logo { font-weight: 700; font-size: 14px; }
+  body.dark .nav-logo { color: #f4f4f5; }
+  body.light .nav-logo { color: #1a1a1a; }
+
+  .nav-link { font-size: 13px; font-weight: 400; }
+  body.dark .nav-link { color: #a1a1aa; }
+  body.light .nav-link { color: #71717a; }
+
+  .theme-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 100;
+    transition: transform 0.2s cubic-bezier(0.16,1,0.3,1);
+  }
+  .theme-btn:active { transform: scale(0.9); }
+  body.dark .theme-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); }
+  body.light .theme-btn { background: rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.1); }
+
+  body.dark .theme-btn .sun-icon { display: none; }
+  body.dark .theme-btn .moon-icon { display: block; }
+  body.light .theme-btn .sun-icon { display: block; }
+  body.light .theme-btn .moon-icon { display: none; }
+  body.dark .theme-btn svg { color: #a1a1aa; }
+  body.light .theme-btn svg { color: #71717a; }
+
+  .hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 80px;
+    position: relative;
+  }
+  .ghost-text {
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-60%);
+    font-size: 10rem;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    line-height: 0.85;
+    pointer-events: none;
+    user-select: none;
+  }
+  body.dark .ghost-text { color: rgba(255,255,255,0.03); }
+  body.light .ghost-text { color: rgba(0,0,0,0.04); }
+
+  .hero-content { position: relative; z-index: 2; padding-left: 18vw; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-family: monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  body.dark .eyebrow { background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.2); color: #34d399; }
+  body.light .eyebrow { background: rgba(22,163,74,0.08); border: 1px solid rgba(22,163,74,0.15); color: #16a34a; }
+
+  .eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; animation: pulse 2s infinite; }
+  body.dark .eyebrow-dot { background: #34d399; }
+  body.light .eyebrow-dot { background: #16a34a; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .hero-text { font-size: 16px; line-height: 1.7; max-width: 420px; margin-bottom: 24px; }
+  body.dark .hero-text { color: #a1a1aa; }
+  body.light .hero-text { color: #52525b; }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+  }
+  body.dark .cta-btn { background: #f4f4f5; color: #0e1011; }
+  body.light .cta-btn { background: #1a1a1a; color: #f8f8f6; }
+
+  /* ===== TRANSITION CIRCLE ===== */
+  .transition-circle {
+    position: fixed;
+    z-index: 9999;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0);
+    will-change: transform, opacity;
+  }
+
+  .instruction {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    backdrop-filter: blur(20px);
+    animation: fadeInUp 0.6s cubic-bezier(0.16,1,0.3,1) both 0.3s;
+  }
+  body.dark .instruction { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #a1a1aa; }
+  body.light .instruction { background: rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.1); color: #71717a; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateX(-50%) translateY(12px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+</style>
+</head>
+<body class="dark">
+
+<div class="transition-circle" id="circle"></div>
+
+<div class="portfolio-mock">
+  <nav class="nav">
+    <div class="nav-pill">
+      <span class="nav-logo">SR</span>
+      <span class="nav-link">about</span>
+      <span class="nav-link">work</span>
+      <span class="nav-link">contact</span>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+        <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <span class="nav-link" style="background:#34d399;color:#0e1011;padding:6px 16px;border-radius:999px;font-weight:600;font-size:12px;">Resume</span>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="ghost-text">SHIVAM<br>RAJPUT</div>
+    <div class="hero-content">
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        DEVELOPER / BUILDER
+      </div>
+      <p class="hero-text">
+        I build web and blockchain products with obsessive attention to craft.
+        Focused on interfaces that feel intentional.
+      </p>
+      <button class="cta-btn">Selected work ↓</button>
+    </div>
+  </div>
+</div>
+
+<div class="instruction">
+  <span>☝</span> Click the circle button in the nav
+</div>
+
+<script>
+  const btn = document.getElementById('themeBtn');
+  const circle = document.getElementById('circle');
+  const body = document.body;
+  let isDark = true;
+  let isAnimating = false;
+
+  btn.addEventListener('click', (e) => {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    const rect = btn.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+
+    // Radius to cover entire viewport from click point
+    const maxDist = Math.max(
+      Math.hypot(x, y),
+      Math.hypot(window.innerWidth - x, y),
+      Math.hypot(x, window.innerHeight - y),
+      Math.hypot(window.innerWidth - x, window.innerHeight - y)
+    );
+    const diameter = maxDist * 2.2;
+
+    // The circle color = the INCOMING theme's background
+    const nextBg = isDark ? '#f8f8f6' : '#0e1011';
+    circle.style.background = nextBg;
+    circle.style.left = x + 'px';
+    circle.style.top = y + 'px';
+    circle.style.width = diameter + 'px';
+    circle.style.height = diameter + 'px';
+    circle.style.opacity = '1';
+
+    // Expand circle over 500ms with expo ease
+    circle.style.transition = 'none';
+    circle.style.transform = 'translate(-50%, -50%) scale(0)';
+    void circle.offsetWidth;
+    circle.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+    circle.style.transform = 'translate(-50%, -50%) scale(1)';
+
+    // At ~420ms the circle fully covers the screen — swap theme BEHIND it
+    setTimeout(() => {
+      isDark = !isDark;
+      body.classList.toggle('dark', isDark);
+      body.classList.toggle('light', !isDark);
+
+      // Immediately fade out the circle to reveal new theme
+      requestAnimationFrame(() => {
+        circle.style.transition = 'opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+        circle.style.opacity = '0';
+      });
+    }, 420);
+
+    // Cleanup
+    setTimeout(() => {
+      circle.style.transition = 'none';
+      circle.style.transform = 'translate(-50%, -50%) scale(0)';
+      circle.style.opacity = '0';
+      isAnimating = false;
+    }, 750);
+  });
+</script>
+</body>
+</html>

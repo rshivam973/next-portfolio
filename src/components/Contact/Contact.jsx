@@ -73,11 +73,11 @@ const Contact = () => {
   };
 
   const inputClasses =
-    "w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 text-text-primary text-sm placeholder:text-text-dim focus:border-accent/40 focus:outline-none transition-colors duration-300";
+    "w-full bg-glass border border-glass-border rounded-xl px-4 py-3 text-text-primary text-sm placeholder:text-text-dim focus:border-accent/40 focus:outline-none transition-colors duration-300";
 
   return (
     <Element name="contact">
-      <section className="py-28 md:py-36">
+      <section id="contact" className="py-28 md:py-36" aria-labelledby="contact-heading">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -96,7 +96,7 @@ const Contact = () => {
             variants={fadeUp}
             className="text-text-primary text-3xl md:text-4xl font-bold tracking-tight mb-10"
           >
-            Let's build something
+            <span id="contact-heading">Let's build something</span>
           </motion.h2>
 
           <motion.form
@@ -170,7 +170,7 @@ const Contact = () => {
             position="bottom-right"
             autoClose={4000}
             theme="dark"
-            toastStyle={{ background: "#141517", border: "1px solid rgba(255,255,255,0.06)" }}
+            toastStyle={{ background: "var(--color-surface)", border: "1px solid var(--color-glass-border)" }}
           />
         </motion.div>
       </section>

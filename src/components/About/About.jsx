@@ -27,7 +27,7 @@ const techStack = [
 const About = () => {
   return (
     <Element name="about">
-      <section className="py-28 md:py-36">
+      <section id="about" className="py-28 md:py-36" aria-labelledby="about-heading">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -42,7 +42,7 @@ const About = () => {
                 variants={fadeUp}
                 className="text-accent text-[11px] font-mono tracking-[0.15em] uppercase mb-4"
               >
-                About
+                <span id="about-heading">About</span>
               </motion.p>
               <motion.p
                 variants={fadeUp}
@@ -67,7 +67,7 @@ const About = () => {
                 {techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="bg-white/[0.04] border border-white/[0.08] rounded-lg px-3.5 py-1.5 text-text-secondary text-sm transition-colors duration-300 ease-out-expo hover:border-accent/30 hover:text-accent"
+                    className="bg-glass border border-glass-border rounded-lg px-3.5 py-1.5 text-text-secondary text-sm transition-colors duration-300 ease-out-expo hover:border-accent/30 hover:text-accent"
                   >
                     {tech}
                   </span>

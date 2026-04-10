@@ -24,7 +24,7 @@ const fadeUp = {
 const Lander = () => {
   const { scrollY } = useScroll();
   const ghostY = useTransform(scrollY, [0, 600], [0, -80]);
-  const ghostOpacity = useTransform(scrollY, [0, 400], [0.03, 0]);
+  const ghostOpacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
     <Element name="lander">
@@ -37,10 +37,16 @@ const Lander = () => {
           style={{ y: ghostY, opacity: ghostOpacity }}
           className="absolute top-[-2rem] left-[-0.5rem] select-none pointer-events-none"
         >
-          <span className="text-[8rem] md:text-[12rem] lg:text-[14rem] font-bold tracking-[-0.06em] leading-[0.85] text-white whitespace-nowrap block">
+          <span
+            className="text-[8rem] md:text-[12rem] lg:text-[14rem] font-bold tracking-[-0.06em] leading-[0.85] text-text-primary whitespace-nowrap block"
+            style={{ opacity: "var(--ghost-opacity)" }}
+          >
             SHIVAM
           </span>
-          <span className="text-[8rem] md:text-[12rem] lg:text-[14rem] font-bold tracking-[-0.06em] leading-[0.85] text-white whitespace-nowrap block">
+          <span
+            className="text-[8rem] md:text-[12rem] lg:text-[14rem] font-bold tracking-[-0.06em] leading-[0.85] text-text-primary whitespace-nowrap block"
+            style={{ opacity: "var(--ghost-opacity)" }}
+          >
             RAJPUT
           </span>
         </motion.div>
@@ -68,8 +74,8 @@ const Lander = () => {
             variants={fadeUp}
             className="text-text-secondary text-base md:text-lg leading-relaxed max-w-[420px] mb-7"
           >
-            I build web and blockchain products with obsessive attention to craft.
-            Focused on interfaces that feel intentional.
+            I'm a full-stack and AI developer who's worked mostly with AI products.
+            Obsessive about craft, focused on interfaces that feel intentional.
           </motion.p>
 
           <motion.div
@@ -100,7 +106,7 @@ const Lander = () => {
           variants={fadeUp}
           className="hidden lg:block absolute right-8 xl:right-16 top-1/2 -translate-y-1/2"
         >
-          <div className="bg-white/[0.03] border border-white/[0.06] rounded-3xl p-1.5">
+          <div className="bg-glass border border-glass-border rounded-3xl p-1.5">
             <div className="relative w-[200px] h-[260px] xl:w-[240px] xl:h-[300px] rounded-[calc(1.5rem-6px)] overflow-hidden bg-surface-light">
               <Image
                 src={ProfilePic}
