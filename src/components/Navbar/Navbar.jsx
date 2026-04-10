@@ -12,6 +12,9 @@ const navLinks = [
   { label: "contact", to: "contact" },
 ];
 
+const getResumeUrl = () =>
+  "https://drive.google.com/file/d/1j1csmoPSRHsQTGt_Igbn3CWFlVtNDXgd/view?usp=sharing";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -41,10 +44,10 @@ const Navbar = () => {
         <ThemeToggle />
 
         <a
-          href="/resume.pdf"
+          href={getResumeUrl()}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Download resume (PDF)"
+          aria-label="View resume"
           className="bg-accent text-canvas text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-300 ease-out-expo hover:scale-105 active:scale-[0.98]"
         >
           Resume
@@ -108,10 +111,10 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 24 }}
               transition={{ delay: 0.24, type: "spring", stiffness: 100, damping: 20 }}
-              href="/resume.pdf"
+              href={getResumeUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Download resume (PDF)"
+              aria-label="View resume"
               className="bg-accent text-canvas text-sm font-semibold px-6 py-2.5 rounded-full mt-4"
             >
               Resume
