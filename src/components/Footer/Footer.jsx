@@ -10,7 +10,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="border-t border-white/[0.06] mt-12">
+    <footer className="border-t border-glass-border mt-12">
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-text-dim text-sm">
           {new Date().getFullYear()} Shivam Rajput

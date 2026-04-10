@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { Link } from "react-scroll";
 import { List, X } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "framer-motion";
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
 
 const navLinks = [
   { label: "about", to: "about" },
+  { label: "experience", to: "experience" },
   { label: "work", to: "projects" },
   { label: "contact", to: "contact" },
 ];
@@ -16,16 +18,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 flex justify-center pt-5 px-4">
       {/* Desktop pill */}
-      <div className="hidden md:flex items-center gap-8 bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-full px-6 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.3)]">
-        <Link
-          to="lander"
-          smooth={true}
-          duration={800}
-          className="text-text-primary font-semibold text-sm tracking-tight cursor-pointer"
-        >
-          SR
-        </Link>
-
+      <div className="hidden md:flex items-center gap-6 bg-glass backdrop-blur-xl border border-glass-border rounded-full px-6 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.15)]">
         <div className="flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
@@ -43,18 +36,24 @@ const Navbar = () => {
           ))}
         </div>
 
+        <div className="w-px h-4 bg-glass-border" />
+
+        <ThemeToggle />
+
         <a
           href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Download resume (PDF)"
           className="bg-accent text-canvas text-xs font-semibold px-4 py-1.5 rounded-full transition-all duration-300 ease-out-expo hover:scale-105 active:scale-[0.98]"
         >
           Resume
         </a>
       </div>
 
-      {/* Mobile hamburger */}
-      <div className="md:hidden fixed top-5 right-5 z-50">
+      {/* Mobile top bar */}
+      <div className="md:hidden fixed top-5 right-5 z-50 flex items-center gap-3">
+        <ThemeToggle />
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="p-2 text-text-primary"
@@ -112,6 +111,7 @@ const Navbar = () => {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Download resume (PDF)"
               className="bg-accent text-canvas text-sm font-semibold px-6 py-2.5 rounded-full mt-4"
             >
               Resume
